@@ -30,5 +30,10 @@ public class Enemigo {
 
     }
 
-
+    public int getHp() {
+        return hp;
+    }
+    public String getNombreEne() {
+        return nombreEne;
+    }
 }
