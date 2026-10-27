@@ -5,12 +5,13 @@ import java.util.Scanner;
 public class App {
     public static Scanner sc = new Scanner(System.in);
 
-    public static int lecturaSegura(){
+    public static int lecturaSegura(String frase){
         boolean repetir = true  ; 
         int respuesta = 0 ;
         do {
             repetir = false ; 
             try {
+                System.out.print(frase );
                 respuesta = sc.nextInt() ; 
 
                 if ( respuesta <= 0 ) {
@@ -37,16 +38,17 @@ public class App {
         String nombre = sc.nextLine();
         int opcion  ;
         int danio ; 
+        boolean pasarTurno;
         Aventurero av1 = new Aventurero(nombre, 40, 40, 10, 4); 
         Enemigo en1 = new Enemigo("Dragón malo", 100, 100, 10);
 
         while (en1.estaDerrotado() == false && av1.estaCaido() == false) {
-            
+            pasarTurno = true ;
             System.out.println("Elige opción: ");
             System.out.println("1. Atacar");
             System.out.println("2. Beber poción");
-            System.out.print("Elige:");
-            opcion = lecturaSegura();
+            System.out.println("3. Iventario y datos");
+            opcion = lecturaSegura("Elige : ");
             System.out.println("---------------");
             
 
@@ -70,10 +72,21 @@ public class App {
                 case 2: 
                     System.out.println("Beber poción");
                     av1.beberPocion();
+                    break;
+                case 3:
+                    pasarTurno = false ; 
+                    System.out.println("====================");
+                    System.out.printf("Estado de %s: HP: %d  Pociones: %d \n", av1.getNombreAve(), av1.getHpAv(), av1.getCantPociones() );
+                    System.out.printf("Estado de %s: HP: %d \n", en1.getNombreEne(), en1.getHp());
+                    System.out.println("====================");
+                    break;
                 default:
+                    System.out.println("Elija una opcion válida ");
+                    System.out.println("------------------------");
+                    pasarTurno = false ; 
                     break;
             }
-            if ( en1.estaDerrotado()== false){
+            if ( en1.estaDerrotado()== false && pasarTurno == true ){
                 System.out.println("============ \n Turno del dragón");
                 System.out.printf("El %s ataca", en1.getNombreEne());
                 en1.atacarEnemig(av1);

@@ -45,6 +45,14 @@ public class Aventurero {
         return derrotado; 
 
     }
-
+    public int getCantPociones() {
+        return cantPociones;
+    }
+    public int getHpAv() {
+        return hpAv;
+    }
+    public String getNombreAve() {
+        return nombreAve;
+    }
 
 }
