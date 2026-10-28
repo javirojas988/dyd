@@ -94,6 +94,12 @@ public class App {
             en1.estaDerrotado();
             av1.estaCaido();
         }
+        if ( en1.getHp() <= 0 ){
+            System.out.println("GG wp ");
+        }
+        if ( av1.getHpAv() <= 0 ){
+            System.out.println("L looser");
+        }
         System.out.println("Fin de la partida");
     }
 }
