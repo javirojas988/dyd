@@ -104,3 +104,6 @@ public class App {
     }
 }
 // TODO podria meterse un mirar mochila, estado del jugador etc que no consuma turnos de
+
+// setters : para manipular atributos desde fuera.
+// Se puede hacer con herencia ya que hay mucho código común
